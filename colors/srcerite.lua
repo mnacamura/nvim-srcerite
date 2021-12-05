@@ -391,12 +391,12 @@ local highlight_groups = {
 	SignColumn  = NONE,
 
 	--[[ 4.2.10. Messages]]
-	ErrorMsg = {fg=red, style='bold'},
-	HintMsg  = {fg=magenta, style='italic'},
-	InfoMsg  = {fg=pink_light, style='italic'},
-	ModeMsg  = {fg=yellow},
-	WarningMsg = {fg=orange, style='bold'},
-	Question   = {fg=orange_light, style='underline'},
+	ErrorMsg = {fg=srcery.bright_white, bg=srcery.red, style='bold'},
+	HintMsg  = {fg=srcery.cyan, style='italic'},
+	InfoMsg  = {fg=srcery.bright_green, style='italic'},
+	ModeMsg  = {fg=srcery.yellow},
+	WarningMsg = {fg=srcery.red, style='bold'},
+	Question   = {fg=srcery.orange, style='underline'},
 
 	--[[ 4.2.11. LSP / Diagnostics ]]
 	DiagnosticError = 'Error',
