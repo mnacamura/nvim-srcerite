@@ -358,10 +358,10 @@ local highlight_groups = {
 	VisualNOS = {bg=srcery.xgray4},
 
 	--[[ 4.2.4. Popup Menu]]
-	Pmenu = {fg=FG, bg=gray_dark},
-	PmenuSbar = {bg=gray_darker},
-	PmenuSel  = {fg=black, bg=gray_light},
-	PmenuThumb = {bg=white},
+	Pmenu = {fg=FG, bg=srcery.xgray2},
+	PmenuSbar = NONE,
+	PmenuSel  = {fg=FG, bg=srcery.blue},
+	PmenuThumb = NONE,
 	WildMenu = 'PmenuSel',
 
 	--[[ 4.2.5. Folds]]
