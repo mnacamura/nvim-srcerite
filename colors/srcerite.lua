@@ -415,10 +415,10 @@ local highlight_groups = {
 	DiagnosticFloatingInfo = 'InfoMsg',
 	DiagnosticSignInfo = 'DiagnosticFloatingInfo',
 
-	DiagnosticUnderlineError = {style={'undercurl', color=red}},
-	DiagnosticUnderlineHint  = {style={'undercurl', color=magenta}},
-	DiagnosticUnderlineInfo  = {style={'undercurl', color=pink_light}},
-	DiagnosticUnderlineWarn = {style={'undercurl', color=orange}},
+	DiagnosticUnderlineError = {style={'undercurl', color=srcery.bright_red}},
+	DiagnosticUnderlineHint  = {style={'undercurl', color=srcery.bright_cyan}},
+	DiagnosticUnderlineInfo  = {style={'undercurl', color=srcery.bright_green}},
+	DiagnosticUnderlineWarn = {style={'undercurl', color=srcery.bright_yellow}},
 
 	LspDiagnosticsDefaultError = 'DiagnosticError',
 	LspDiagnosticsFloatingError = 'DiagnosticFloatingError',
