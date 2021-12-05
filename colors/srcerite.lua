@@ -381,10 +381,10 @@ local highlight_groups = {
 	Search = {style='inverse'},
 
 	--[[ 4.2.8. Spelling]]
-	SpellBad   = {style={'undercurl', color=red}},
-	SpellCap   = {style={'undercurl', color=yellow}},
-	SpellLocal = {style={'undercurl', color=green}},
-	SpellRare  = {style={'undercurl', color=orange}},
+	SpellBad   = {style={'undercurl', color=srcery.blue}},
+	SpellCap   = {fg=srcery.green, style={'bold', 'italic'}},
+	SpellLocal = {style={'undercurl', color=srcery.cyan}},
+	SpellRare  = {style={'undercurl', color=srcery.magenta}},
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
 	ColorColumn = {bg=srcery.xgray2},
