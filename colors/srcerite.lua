@@ -631,12 +631,12 @@ local highlight_groups = {
 	--[[ 4.3.13. Markdown ]]
 	markdownCode = 'mkdCode',
 	markdownCodeDelimiter = 'mkdCodeDelimiter',
-	markdownH1 = {fg=red, style='bold'},
-	markdownH2 = {fg=orange, style='bold'},
-	markdownH3 = {fg=yellow, style='bold'},
-	markdownH4 = {fg=green_dark, style='bold'},
-	markdownH5 = {fg=cyan, style='bold'},
-	markdownH6 = {fg=purple_light, style='bold'},
+	markdownH1 = {fg=srcery.red, style='bold'},
+	markdownH2 = {fg=srcery.orange, style='bold'},
+	markdownH3 = {fg=srcery.yellow, style='bold'},
+	markdownH4 = {fg=srcery.green, style='bold'},
+	markdownH5 = {fg=srcery.cyan, style='bold'},
+	markdownH6 = {fg=srcery.bright_magenta, style='bold'},
 	markdownLinkDelimiter = 'Delimiter',
 	markdownLinkTextDelimiter = 'markdownLinkDelimiter',
 	markdownUrl = 'Underlined',
@@ -854,10 +854,10 @@ local highlight_groups = {
 	JumpMotion = 'EasyMotion',
 
 	--[[ 4.4.4. vim-gitgutter / vim-signify / gitsigns.nvim ]]
-	GitGutterAdd    = {fg = green},
-	GitGutterChange = {fg = yellow},
-	GitGutterDelete = {fg = red},
-	GitGutterChangeDelete = {fg=orange},
+	GitGutterAdd    = {fg = srcery.green},
+	GitGutterChange = {fg = srcery.yellow},
+	GitGutterDelete = {fg = srcery.red},
+	GitGutterChangeDelete = {fg=srcery.orange},
 
 	SignifySignAdd    = 'GitGutterAdd',
 	SignifySignChange = 'GitGutterChange',
@@ -869,8 +869,8 @@ local highlight_groups = {
 	GitSignsDelete = 'GitGutterDelete',
 
 	--[[ 4.4.5. vim-indent-guides ]]
-	IndentGuidesOdd  = {bg=gray_darker},
-	IndentGuidesEven = {bg=gray},
+	IndentGuidesOdd  = {bg=srcery.xgray4},
+	IndentGuidesEven = {bg=srcery.xgray3},
 
 	--[[ 4.4.7. NERDTree ]]
 	NERDTreeCWD = 'Label',
@@ -894,7 +894,7 @@ local highlight_groups = {
 	--[[ 4.4.9. barbar.nvim ]]
 	BufferCurrent       = 'TabLineSel',
 	BufferCurrentIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferCurrent.bg} end,
-	BufferCurrentMod    = {fg=tan, bg=black, style='bold'},
+	BufferCurrentMod    = {fg=srcery.bright_yellow, bg=srcery.black, style='bold'},
 	BufferCurrentSign   = 'HintMsg',
 	BufferCurrentTarget = 'BufferCurrentSign',
 
@@ -909,7 +909,7 @@ local highlight_groups = {
 
 	BufferVisible       = 'TabLine',
 	BufferVisibleIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferVisible.bg} end,
-	BufferVisibleMod    = function(self) return {fg=white, bg=self.BufferVisible.bg, style='italic'} end,
+	BufferVisibleMod    = function(self) return {fg=srcery.white, bg=self.BufferVisible.bg, style='italic'} end,
 	BufferVisibleSign   = 'BufferVisible',
 	BufferVisibleTarget = function(self)
 		local super = self.BufferVisibleMod
@@ -942,15 +942,15 @@ local highlight_groups = {
 	TodoFgHACK = function(self) return {fg=self.Todo.bg} end,
 	TodoFgNOTE = 'HintMsg',
 	TodoFgPERF = 'InfoMsg',
-	TodoFgTODO = {fg=cyan, style='italic'},
+	TodoFgTODO = {fg=srcery.cyan, style='italic'},
 	TodoFgWARN = function(self) return {fg=self.WarningMsg.fg} end,
 
-	TodoBgFIX = function(self) return {fg=black, bg=self.ErrorMsg.fg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgHACK = function(self) return {fg=black, bg=self.Todo.bg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgNOTE = function(self) return {fg=black, bg=self.Hint.bg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgPERF = function(self) return {fg=black, bg=self.Info.bg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgTODO = {fg=black, bg=cyan, style={'bold', 'italic', 'nocombine'}},
-	TodoBgWARN = function(self) return {fg=black, bg=self.Warning.bg, style={'bold', 'italic', 'nocombine'}} end,
+	TodoBgFIX = function(self) return {fg=srcery.black, bg=self.ErrorMsg.fg, style={'bold', 'italic', 'nocombine'}} end,
+	TodoBgHACK = function(self) return {fg=srcery.black, bg=self.Todo.bg, style={'bold', 'italic', 'nocombine'}} end,
+	TodoBgNOTE = function(self) return {fg=srcery.black, bg=self.Hint.bg, style={'bold', 'italic', 'nocombine'}} end,
+	TodoBgPERF = function(self) return {fg=srcery.black, bg=self.Info.bg, style={'bold', 'italic', 'nocombine'}} end,
+	TodoBgTODO = {fg=srcery.black, bg=srcery.cyan, style={'bold', 'italic', 'nocombine'}},
+	TodoBgWARN = function(self) return {fg=srcery.black, bg=self.Warning.bg, style={'bold', 'italic', 'nocombine'}} end,
 
 	TodoSignFIX  = 'TodoFgFIX',
 	TodoSignHACK = 'TodoFgHACK',
@@ -991,7 +991,7 @@ local highlight_groups = {
 	CmpItemKindValueDefault = 'CmpItemKindConstantDefault',
 	CmpItemKindVariableDefault = 'Identifier',
 	CmpItemMenuDefault = 'NormalFloat',
-	CmpItemMenuThumb = {fg=white, style='bold'},
+	CmpItemMenuThumb = {fg=srcery.white, style='bold'},
 
 	--[[ 4.4.17. packer.nvim ]]
 	packerFail = 'ErrorMsg',
@@ -999,16 +999,16 @@ local highlight_groups = {
 	packerPackageNotLoaded = 'Ignore',
 	packerStatusFail = 'Statement',
 	packerStatusSuccess = 'packerStatusFail',
-	packerSuccess = function(self) return {fg=green, style=self.packerFail.style} end,
+	packerSuccess = function(self) return {fg=srcery.green, style=self.packerFail.style} end,
 
 	--[[ 4.4.18. nvim-tree ]]
 	NvimTreeGitDeleted = function(self) return {fg=self.DiffDelete.bg, bg=NONE} end,
-	NvimTreeGitDirty = {fg=orange, bg=NONE},
+	NvimTreeGitDirty = {fg=srcery.orange, bg=NONE},
 	NvimTreeGitIgnored = 'Ignore',
 	NvimTreeGitMerge = 'NvimTreeGitRenamed',
 	NvimTreeGitNew = function(self) return {fg=self.DiffAdd.bg, bg=NONE} end,
 	NvimTreeGitRenamed = function(self) return {fg=self.DiffChange.bg, bg=NONE} end,
-	NvimTreeGitStaged = {fg=cyan, bg=NONE},
+	NvimTreeGitStaged = {fg=srcery.cyan, bg=NONE},
 }
 
 --[[ Step 5: Terminal Colors
