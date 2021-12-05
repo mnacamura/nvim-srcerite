@@ -365,8 +365,8 @@ local highlight_groups = {
 	WildMenu = 'PmenuSel',
 
 	--[[ 4.2.5. Folds]]
-	FoldColumn = {bg=gray_darker, style='bold'},
-	Folded = {fg=black,  bg=purple_light, style='italic'},
+	FoldColumn = {fg=srcery.bright_black, style='bold'},
+	Folded = {fg=srcery.bright_black, style='italic'},
 
 	--[[ 4.2.6. Diffs]]
 	DiffAdd    = {fg=black, bg=green_dark},
