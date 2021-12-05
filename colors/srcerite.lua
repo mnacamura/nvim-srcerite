@@ -291,13 +291,13 @@ local highlight_groups = {
 	Function = {fg=srcery.yellow},
 
 	--[[ 4.1.3. Syntax]]
-	Statement   = {fg=ice},
-	Conditional = {fg=ice, style='italic'},
-	Repeat   = {fg=turqoise, style='italic'},
-	Label    = {fg=pink, style='bold'},
-	Operator = {fg=green, style='bold'},
-	Keyword  = {fg=teal},
-	Exception = {fg=red_light, style='bold'},
+	Statement   = {fg=srcery.red},
+	Conditional = {fg=srcery.red, style='italic'},
+	Repeat   = {fg=srcery.red, style='italic'},
+	Label    = {fg=srcery.red, style='bold'},
+	Operator = {fg=highlight_group_normal.fg, style='bold'},
+	Keyword  = {fg=srcery.red},
+	Exception = {fg=srcery.red, style='bold'},
 	Noise = 'Delimiter',
 
 	--[[ 4.1.4. Metatextual Information]]
