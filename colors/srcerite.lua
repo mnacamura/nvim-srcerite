@@ -1047,22 +1047,22 @@ local highlight_groups = {
 ]]
 
 local terminal_colors = {
-	[1]  = black,
-	[2]  = red_dark,
-	[3]  = green_dark,
-	[4]  = orange,
-	[5]  = blue,
-	[6]  = magenta_dark,
-	[7]  = teal,
-	[8]  = gray,
-	[9]  = gray_dark,
-	[10] = red,
-	[11] = green,
-	[12] = yellow,
-	[13] = turqoise,
-	[14] = purple,
-	[15] = cyan,
-	[16] = gray_light
+	[1]  = srcery.black,
+	[2]  = srcery.red,
+	[3]  = srcery.green,
+	[4]  = srcery.yellow,
+	[5]  = srcery.blue,
+	[6]  = srcery.magenta,
+	[7]  = srcery.cyan,
+	[8]  = srcery.white,
+	[9]  = srcery.bright_black,
+	[10] = srcery.bright_red,
+	[11] = srcery.bright_green,
+	[12] = srcery.bright_yellow,
+	[13] = srcery.bright_blue,
+	[14] = srcery.bright_magenta,
+	[15] = srcery.bright_cyan,
+	[16] = srcery.bright_white,
 }
 
 --[[ Step 5: Sourcing
