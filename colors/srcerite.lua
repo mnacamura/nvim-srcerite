@@ -375,9 +375,10 @@ local highlight_groups = {
 	DiffText   = {fg=srcery.yellow},
 
 	--[[ 4.2.7. Searching]]
+	-- NOTE: g.srcery_inverse_matches == true and g.srcery_inverse_match_paren == true
 	IncSearch  = {style='inverse'},
-	MatchParen = {fg=green, style={'bold', 'underline'}},
-	Search = {style={'underline', color=white}},
+	MatchParen = {fg=srcery.bright_magenta, style={'bold', 'inverse'}},
+	Search = {style='inverse'},
 
 	--[[ 4.2.8. Spelling]]
 	SpellBad   = {style={'undercurl', color=red}},
