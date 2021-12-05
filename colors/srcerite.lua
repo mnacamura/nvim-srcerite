@@ -447,7 +447,7 @@ local highlight_groups = {
 	CursorColumn = 'CursorLine',
 
 	--[[ 4.2.13. Misc ]]
-	Directory = {fg=ice, style='bold'},
+	Directory = {fg=srcery.green, style='bold'},
 
 	--[[ 4.3. Programming Languages
 		Everything in this section is OPTIONAL. Feel free to remove everything
