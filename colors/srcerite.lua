@@ -301,11 +301,11 @@ local highlight_groups = {
 	Noise = 'Delimiter',
 
 	--[[ 4.1.4. Metatextual Information]]
-	PreProc = {fg=tan},
-	Include = {fg=green_light, style='nocombine'},
-	Define = {fg=blue, style='nocombine'},
-	Macro  = {fg=blue, style='italic'},
-	PreCondit = {fg=tan, style='italic'},
+	PreProc = {fg=srcery.cyan},
+	Include = {fg=srcery.cyan, style='nocombine'},
+	Define = {fg=srcery.cyan, style='nocombine'},
+	Macro  = {fg=srcery.orange, style='italic'},
+	PreCondit = {fg=srcery.cyan, style='italic'},
 
 	--[[ 4.1.5. Semantics]]
 	Type         = {fg=cyan},
