@@ -333,8 +333,8 @@ local highlight_groups = {
 
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
-	StatusLine = {fg=green_light, bg=gray_darker},
-	StatusLineNC = function(self) return {fg=gray, bg=self.StatusLine.bg} end,
+	StatusLine = {fg=srcery.bright_white, bg=srcery.xgray2},
+	StatusLineNC = function(self) return {fg=srcery.bright_black, bg=self.StatusLine.bg} end,
 	StatusLineTerm = 'StatusLine',
 	StatusLineTermNC = 'StatusLineNC',
 
