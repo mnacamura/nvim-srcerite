@@ -1102,3 +1102,5 @@ require(vim.g.colors_name)(
 )
 
 -- Thanks to Romain Lafourcade (https://github.com/romainl) for the original template (romainl/vim-rnb).
+
+-- vim:tw=120:ts=3:noet:
