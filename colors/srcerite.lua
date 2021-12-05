@@ -308,10 +308,10 @@ local highlight_groups = {
 	PreCondit = {fg=srcery.cyan, style='italic'},
 
 	--[[ 4.1.5. Semantics]]
-	Type         = {fg=cyan},
-	StorageClass = {fg=orange_light, style='bold'},
-	Structure = {fg=blue, style='bold'},
-	Typedef = {fg=cyan, style='italic'},
+	Type         = {fg=srcery.bright_blue},
+	StorageClass = {fg=srcery.orange, style='bold'},
+	Structure = {fg=srcery.cyan, style='bold'},
+	Typedef = {fg=srcery.magenta, style='italic'},
 
 	--[[ 4.1.6. Edge Cases]]
 	Special = {fg=magenta, style='bold'},
