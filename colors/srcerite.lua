@@ -287,8 +287,8 @@ local highlight_groups = {
 	Float   = 'Number',
 
 	--[[ 4.1.2. Identifiers]]
-	Identifier = {fg=FG},
-	Function = {fg=purple},
+	Identifier = {fg=srcery.cyan},
+	Function = {fg=srcery.yellow},
 
 	--[[ 4.1.3. Syntax]]
 	Statement   = {fg=ice},
