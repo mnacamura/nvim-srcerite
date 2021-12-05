@@ -273,8 +273,8 @@ local highlight_group_normal = {fg=srcery.bright_white, bg=NONE}
 -- This is where the rest of your highlights should go.
 local highlight_groups = {
 	--[[ 4.1. Text Analysis ]]
-	Comment = {fg=gray, style='italic'},
-	NonText = {fg=gray_darker},
+	Comment = {fg=srcery.bright_black, style='italic'},
+	NonText = {fg=srcery.xgray4},
 	EndOfBuffer = 'NonText',
 	Whitespace  = 'NonText',
 
