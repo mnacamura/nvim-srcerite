@@ -348,14 +348,14 @@ local highlight_groups = {
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal = 'NonText',
-	CursorLine   = {bg=gray_dark},
-	CursorLineNr = function(self) return {fg=pink, bg=self.LineNr.bg} end,
+	CursorLine   = {bg=srcery.xgray2},
+	CursorLineNr = function(self) return {fg=srcery.yellow, bg=self.LineNr.bg} end,
 	debugBreakpoint = 'ErrorMsg',
 	debugPC = 'ColorColumn',
-	LineNr  = {fg=gray},
+	LineNr  = {fg=srcery.bright_black},
 	QuickFixLine = function(self) return {bg=self.StatusLine.bg} end,
 	Visual    = {style='inverse'},
-	VisualNOS = {bg=gray_darker},
+	VisualNOS = {bg=srcery.xgray4},
 
 	--[[ 4.2.4. Popup Menu]]
 	Pmenu = {fg=FG, bg=gray_dark},
