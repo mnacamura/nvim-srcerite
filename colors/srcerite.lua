@@ -323,13 +323,13 @@ local highlight_groups = {
 	Debug = 'WarningMsg',
 
 	--[[ 4.1.7. Help Syntax]]
-	Underlined = {fg=turqoise, style='underline'},
-	Ignore = {fg=gray},
-	Error = {fg=white, bg=red_dark, style='bold'},
-	Todo = {fg=black, bg=yellow, style='bold'},
-	Hint = {fg=black, bg=magenta, style='bold'},
-	Info = {fg=black, bg=pink_light, style='bold'},
-	Warning = {fg=black, bg=orange, style='bold'},
+	Underlined = {fg=srcery.blue, style='underline'},
+	Ignore = {fg=srcery.xgray6},
+	Error = {fg=srcery.bright_white, bg=srcery.red, style='bold'},
+	Todo = {fg=srcery.bright_white, style='bold'},
+	Hint = {fg=srcery.bright_cyan, style='bold'},
+	Info = {fg=srcery.bright_green, style='bold'},
+	Warning = {fg=srcery.bright_yellow, style='bold'},
 
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
