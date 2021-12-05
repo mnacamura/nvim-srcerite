@@ -279,11 +279,11 @@ local highlight_groups = {
 	Whitespace  = 'NonText',
 
 	--[[ 4.1.1. Literals]]
-	Constant = {fg=orange_light},
-	String = {fg=green_dark},
-	Character = {fg=red_light},
-	Number  = {fg=pink_light},
-	Boolean = {fg=yellow},
+	Constant = {fg=srcery.bright_magenta},
+	String = {fg=srcery.bright_green},
+	Character = {fg=srcery.bright_magenta},
+	Number  = {fg=srcery.bright_magenta},
+	Boolean = {fg=srcery.bright_magenta},
 	Float   = 'Number',
 
 	--[[ 4.1.2. Identifiers]]
