@@ -369,10 +369,10 @@ local highlight_groups = {
 	Folded = {fg=srcery.bright_black, style='italic'},
 
 	--[[ 4.2.6. Diffs]]
-	DiffAdd    = {fg=black, bg=green_dark},
-	DiffChange = NONE,
-	DiffDelete = function(self) return {fg=self.DiffAdd.fg, bg=red} end,
-	DiffText   = function(self) return {fg=self.DiffAdd.fg, bg=yellow} end,
+	DiffAdd    = {fg=srcery.green},
+	DiffChange = {fg=srcery.cyan},
+	DiffDelete = {fg=srcery.red},
+	DiffText   = {fg=srcery.yellow},
 
 	--[[ 4.2.7. Searching]]
 	IncSearch  = {style='inverse'},
