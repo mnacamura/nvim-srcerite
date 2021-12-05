@@ -339,12 +339,12 @@ local highlight_groups = {
 	StatusLineTermNC = 'StatusLineNC',
 
 	--[[ 4.2.2. Separators]]
-	FloatBorder = {fg=gray},
+	FloatBorder = {fg=srcery.xgray6},
 	TabLine = function(self) return {fg=FG, bg=self.StatusLine.bg} end,
-	TabLineFill = function(self) return {fg=self.TabLine.bg, bg=black} end,
+	TabLineFill = function(self) return {fg=self.TabLine.bg, bg=srcery.xgray2} end,
 	TabLineSel = function(self) return {fg=self.TabLine.fg, bg=highlight_group_normal.bg} end,
 	Title = {style='bold'},
-	VertSplit = {fg=white},
+	VertSplit = {fg=srcery.bright_white},
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal = 'NonText',
