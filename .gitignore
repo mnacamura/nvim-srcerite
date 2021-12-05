@@ -1,1 +1,3 @@
-rnb.vim
+.envrc
+.direnv/
+doc/tags
