@@ -314,12 +314,12 @@ local highlight_groups = {
 	Typedef = {fg=srcery.magenta, style='italic'},
 
 	--[[ 4.1.6. Edge Cases]]
-	Special = {fg=magenta, style='bold'},
-	SpecialChar = {fg=red_light, style='italic'},
+	Special = {fg=srcery.orange, style='bold'},
+	SpecialChar = {fg=srcery.bright_magenta, style='italic'},
 	SpecialKey = 'Character',
 	Tag = 'Underlined',
-	Delimiter = {fg=white},
-	SpecialComment = {fg=gray, style={'bold', 'nocombine'}},
+	Delimiter = {fg=srcery.bright_black},  -- TODO: implement dim_lisp_paren feature
+	SpecialComment = {fg=srcery.white, style={'bold', 'nocombine'}},
 	Debug = 'WarningMsg',
 
 	--[[ 4.1.7. Help Syntax]]
