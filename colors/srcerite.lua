@@ -57,7 +57,7 @@
 ]]
 
 -- This is the name of your colorscheme which will be used as per |g:colors_name|.
-vim.g.colors_name = 'highlite'
+vim.g.colors_name = 'srcerite'
 
 --[[ Step 3: Colors
 	Next you will define all of the colors that you will use for the color scheme.
