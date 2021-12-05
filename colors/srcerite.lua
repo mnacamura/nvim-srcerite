@@ -444,7 +444,7 @@ local highlight_groups = {
 	--[[ 4.2.12. Cursor ]]
 	Cursor   = {style='inverse'},
 	CursorIM = 'Cursor',
-	CursorColumn = {bg=gray_dark},
+	CursorColumn = 'CursorLine',
 
 	--[[ 4.2.13. Misc ]]
 	Directory = {fg=ice, style='bold'},
