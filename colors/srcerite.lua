@@ -325,9 +325,9 @@ local highlight_groups = {
 	--[[ 4.1.7. Help Syntax]]
 	Underlined = {fg=turqoise, style='underline'},
 	Ignore = {fg=gray},
-	Error = {fg=white, bg=red_dark, style='bold'},
+	Error = {fg=gray_light, bg=red_dark, style='bold'},
 	Todo = {fg=black, bg=yellow, style='bold'},
-	Hint = {fg=black, bg=magenta, style='bold'},
+	Hint = {fg=gray_light, bg=magenta, style='bold'},
 	Info = {fg=black, bg=pink_light, style='bold'},
 	Warning = {fg=black, bg=orange, style='bold'},
 
