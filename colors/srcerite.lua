@@ -359,9 +359,9 @@ local highlight_groups = {
 
 	--[[ 4.2.4. Popup Menu]]
 	Pmenu = {fg=FG, bg=gray_dark},
-	PmenuSbar = {bg=gray_darker},
+	PmenuSbar = NONE,
 	PmenuSel  = {fg=black, bg=gray_light},
-	PmenuThumb = {bg=white},
+	PmenuThumb = NONE,
 	WildMenu = 'PmenuSel',
 
 	--[[ 4.2.5. Folds]]
