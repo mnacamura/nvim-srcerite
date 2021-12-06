@@ -57,7 +57,7 @@
 ]]
 
 -- This is the name of your colorscheme which will be used as per |g:colors_name|.
-vim.g.colors_name = 'highlite'
+vim.g.colors_name = 'srcerite'
 
 --[[ Step 3: Colors
 	Next you will define all of the colors that you will use for the color scheme.
@@ -85,40 +85,70 @@ vim.g.colors_name = 'highlite'
 	NOTE: |Replace-mode| will probably be useful here.
 ]]
 
-local black       = {'#202020', 235, 'black'}
-local gray        = {'#808080', 244, 'gray'}
-local gray_dark   = {'#353535', 236, 'darkgrey'}
-local gray_darker = {'#505050', 239, 'gray'}
-local gray_light  = {'#c0c0c0', 250, 'gray'}
-local white       = {'#ffffff', 231, 'white'}
+local srcery = {
+	black          = {'#1c1b19',  0, 'Black'},
+	red            = {'#ef2f27',  1, 'DarkRed'},
+	green          = {'#519f50',  2, 'DarkGreen'},
+	yellow         = {'#fbb829',  3, 'DarkYellow'},
+	blue           = {'#2c78bf',  4, 'DarkBlue'},
+	magenta        = {'#e02c6d',  5, 'DarkMagenta'},
+	cyan           = {'#0aaeb3',  6, 'DarkCyan'},
+	white          = {'#baa67f',  7, 'LightGray'},
+	bright_black   = {'#918175',  8, 'DarkGray'},
+	bright_red     = {'#f75341',  9, 'Red'},
+	bright_green   = {'#98bc37', 10, 'Green'},
+	bright_yellow  = {'#fed06e', 11, 'Yellow'},
+	bright_blue    = {'#68a8e4', 12, 'Blue'},
+	bright_magenta = {'#ff5c8f', 13, 'Magenta'},
+	bright_cyan    = {'#2be4d0', 14, 'Cyan'},
+	bright_white   = {'#fce8c3', 15, 'White'},
 
-local tan = {'#f4c069', 221, 'yellow'}
+	orange         = {'#ff5f00', 202, 'DarkYellow'},
+	bright_orange  = {'#ff8700', 208, 'Yellow'},
 
-local red       = {'#ee4a59', 203, 'red'}
-local red_dark  = {'#a80000', 124, 'darkred'}
-local red_light = {'#ff4090', 205, 'red'}
+	hard_black     = {'#121212', 233, 'Black'},
+	xgray1         = {'#262626', 235, 'Gray'},
+	xgray2         = {'#303030', 236, 'Gray'},
+	xgray3         = {'#3a3a3a', 237, 'DarkGray'},
+	xgray4         = {'#444444', 238, 'DarkGray'},
+	xgray5         = {'#4e4e4e', 239, 'LightGray'},
+	xgray6         = {'#585858', 240, 'LightGray'},
+}
 
-local orange       = {'#ff8900', 208, 'darkyellow'}
-local orange_light = {'#f0af00', 214, 'darkyellow'}
+local black       = srcery.black
+local gray        = srcery.bright_black
+local gray_dark   = srcery.xgray1
+local gray_darker = srcery.xgray4
+local gray_light  = srcery.bright_white
+local white       = srcery.white
 
-local yellow = {'#f0df33', 227, 'yellow'}
+local tan = srcery.bright_yellow
 
-local green_dark  = {'#70d533', 113, 'darkgreen'}
-local green       = {'#22ff22', 46,  'green'}
-local green_light = {'#99ff99', 120, 'green'}
-local turqoise    = {'#2bff99', 48,  'green'}
+local red       = srcery.red
+local red_dark  = srcery.red
+local red_light = srcery.bright_red
 
-local blue = {'#7766ff', 63,  'darkblue'}
-local cyan = {'#33dbc3', 80,  'cyan'}
-local ice  = {'#95c5ff', 111, 'cyan'}
-local teal = {'#60afff', 75,  'blue'}
+local orange       = srcery.orange
+local orange_light = srcery.bright_orange
 
-local magenta      = {'#d5508f', 168, 'magenta'}
-local magenta_dark = {'#bb0099', 126, 'darkmagenta'}
-local pink         = {'#ffa6ff', 219, 'magenta'}
-local pink_light   = {'#ffb7b7', 217, 'white'}
-local purple       = {'#cf55f0', 171, 'magenta'}
-local purple_light = {'#af60af', 133, 'darkmagenta'}
+local yellow = srcery.yellow
+
+local green_dark  = srcery.bright_green
+local green       = srcery.green
+local green_light = srcery.bright_green
+local turqoise    = srcery.blue
+
+local blue = srcery.blue
+local cyan = srcery.cyan
+local ice  = srcery.cyan
+local teal = srcery.bright_blue
+
+local magenta      = srcery.magenta
+local magenta_dark = srcery.magenta
+local pink         = srcery.magenta
+local pink_light   = srcery.bright_magenta
+local purple       = srcery.magenta
+local purple_light = srcery.bright_magenta
 
 --[[ Step 4: highlights
 	You can define highlight groups like this:
@@ -295,9 +325,9 @@ local highlight_groups = {
 	--[[ 4.1.7. Help Syntax]]
 	Underlined = {fg=turqoise, style='underline'},
 	Ignore = {fg=gray},
-	Error = {fg=white, bg=red_dark, style='bold'},
+	Error = {fg=gray_light, bg=red_dark, style='bold'},
 	Todo = {fg=black, bg=yellow, style='bold'},
-	Hint = {fg=black, bg=magenta, style='bold'},
+	Hint = {fg=gray_light, bg=magenta, style='bold'},
 	Info = {fg=black, bg=pink_light, style='bold'},
 	Warning = {fg=black, bg=orange, style='bold'},
 
@@ -314,40 +344,40 @@ local highlight_groups = {
 	TabLineFill = function(self) return {fg=self.TabLine.bg, bg=black} end,
 	TabLineSel = function(self) return {fg=self.TabLine.fg, bg=highlight_group_normal.bg} end,
 	Title = {style='bold'},
-	VertSplit = {fg=white},
+	VertSplit = function(self) return {fg=self.StatusLine.bg} end,
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal = 'NonText',
 	CursorLine   = {bg=gray_dark},
-	CursorLineNr = function(self) return {fg=pink, bg=self.LineNr.bg} end,
+	CursorLineNr = function(self) return {fg=gray, bg=self.LineNr.bg} end,
 	debugBreakpoint = 'ErrorMsg',
 	debugPC = 'ColorColumn',
-	LineNr  = {fg=gray},
+	LineNr  = {fg=gray_darker},
 	QuickFixLine = function(self) return {bg=self.StatusLine.bg} end,
 	Visual    = {style='inverse'},
 	VisualNOS = {bg=gray_darker},
 
 	--[[ 4.2.4. Popup Menu]]
 	Pmenu = {fg=FG, bg=gray_dark},
-	PmenuSbar = {bg=gray_darker},
+	PmenuSbar = NONE,
 	PmenuSel  = {fg=black, bg=gray_light},
-	PmenuThumb = {bg=white},
+	PmenuThumb = NONE,
 	WildMenu = 'PmenuSel',
 
 	--[[ 4.2.5. Folds]]
 	FoldColumn = {bg=gray_darker, style='bold'},
-	Folded = {fg=black,  bg=purple_light, style='italic'},
+	Folded = {fg=gray_darker, style='italic'},
 
 	--[[ 4.2.6. Diffs]]
-	DiffAdd    = {fg=black, bg=green_dark},
-	DiffChange = NONE,
-	DiffDelete = function(self) return {fg=self.DiffAdd.fg, bg=red} end,
-	DiffText   = function(self) return {fg=self.DiffAdd.fg, bg=yellow} end,
+	DiffAdd    = {fg=green_dark},
+	DiffChange = {bg=gray_dark},
+	DiffDelete = {fg=red},
+	DiffText   = {fg=yellow},
 
 	--[[ 4.2.7. Searching]]
-	IncSearch  = {style='inverse'},
+	IncSearch  = {bg=gray_darker, style={'underline', 'bold'}},
 	MatchParen = {fg=green, style={'bold', 'underline'}},
-	Search = {style={'underline', color=white}},
+	Search = {bg=gray_darker, style='bold'},
 
 	--[[ 4.2.8. Spelling]]
 	SpellBad   = {style={'undercurl', color=red}},
@@ -356,7 +386,7 @@ local highlight_groups = {
 	SpellRare  = {style={'undercurl', color=orange}},
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
-	ColorColumn = {style='inverse'},
+	ColorColumn = {bg=gray_dark},
 	SignColumn  = NONE,
 
 	--[[ 4.2.10. Messages]]
@@ -839,7 +869,7 @@ local highlight_groups = {
 
 	--[[ 4.4.5. vim-indent-guides ]]
 	IndentGuidesOdd  = {bg=gray_darker},
-	IndentGuidesEven = {bg=gray},
+	IndentGuidesEven = {bg=gray_dark},
 
 	--[[ 4.4.7. NERDTree ]]
 	NERDTreeCWD = 'Label',
@@ -1017,22 +1047,22 @@ local highlight_groups = {
 ]]
 
 local terminal_colors = {
-	[1]  = black,
-	[2]  = red_dark,
-	[3]  = green_dark,
-	[4]  = orange,
-	[5]  = blue,
-	[6]  = magenta_dark,
-	[7]  = teal,
-	[8]  = gray,
-	[9]  = gray_dark,
-	[10] = red,
-	[11] = green,
-	[12] = yellow,
-	[13] = turqoise,
-	[14] = purple,
-	[15] = cyan,
-	[16] = gray_light
+	[1]  = srcery.black,
+	[2]  = srcery.red,
+	[3]  = srcery.green,
+	[4]  = srcery.yellow,
+	[5]  = srcery.blue,
+	[6]  = srcery.magenta,
+	[7]  = srcery.cyan,
+	[8]  = srcery.white,
+	[9]  = srcery.bright_black,
+	[10] = srcery.bright_red,
+	[11] = srcery.bright_green,
+	[12] = srcery.bright_yellow,
+	[13] = srcery.bright_blue,
+	[14] = srcery.bright_magenta,
+	[15] = srcery.bright_cyan,
+	[16] = srcery.bright_white,
 }
 
 --[[ Step 5: Sourcing
@@ -1102,3 +1132,5 @@ require(vim.g.colors_name)(
 )
 
 -- Thanks to Romain Lafourcade (https://github.com/romainl) for the original template (romainl/vim-rnb).
+
+-- vim:tw=120:ts=3:noet:
