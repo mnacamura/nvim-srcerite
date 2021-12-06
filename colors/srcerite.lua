@@ -344,7 +344,7 @@ local highlight_groups = {
 	TabLineFill = function(self) return {fg=self.TabLine.bg, bg=black} end,
 	TabLineSel = function(self) return {fg=self.TabLine.fg, bg=highlight_group_normal.bg} end,
 	Title = {style='bold'},
-	VertSplit = {fg=white},
+	VertSplit = function(self) return {fg=self.StatusLine.bg} end,
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal = 'NonText',
