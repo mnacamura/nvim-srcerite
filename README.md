@@ -1,13 +1,13 @@
 # nvim-srcerite
 
-![screenshot](./screenshot.png)
-
 `nvim-srcerite` is a colorscheme for Neovim, generated from the template colorscheme
 [nvim-highlite][1].
 
 It is heavily inspired by [srcery][2], long time my favorite Vim colorscheme.
 As its name implies, `nvim-srcerite` is a mix-in of `srcery` and `highlite`: it is intended to
-make the best use of `srcery`'s warm color palette and `highlite`'s nice syntax highlighting.
+make the best use of `srcery`'s contrasting color palette and `highlite`'s nice syntax highlighting.
+
+![screenshot](./screenshot.png)
 
 ## Installation
 
