@@ -869,7 +869,7 @@ local highlight_groups = {
 
 	--[[ 4.4.5. vim-indent-guides ]]
 	IndentGuidesOdd  = {bg=gray_darker},
-	IndentGuidesEven = {bg=gray},
+	IndentGuidesEven = {bg=gray_dark},
 
 	--[[ 4.4.7. NERDTree ]]
 	NERDTreeCWD = 'Label',
