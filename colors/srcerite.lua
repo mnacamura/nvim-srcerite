@@ -115,40 +115,40 @@ local srcery = {
 	xgray6         = {'#585858', 240, 'LightGray'},
 }
 
-local black       = {'#202020', 235, 'black'}
-local gray        = {'#808080', 244, 'gray'}
-local gray_dark   = {'#353535', 236, 'darkgrey'}
-local gray_darker = {'#505050', 239, 'gray'}
-local gray_light  = {'#c0c0c0', 250, 'gray'}
-local white       = {'#ffffff', 231, 'white'}
+local black       = srcery.black
+local gray        = srcery.bright_black
+local gray_dark   = srcery.xgray1
+local gray_darker = srcery.xgray4
+local gray_light  = srcery.bright_white
+local white       = srcery.white
 
-local tan = {'#f4c069', 221, 'yellow'}
+local tan = srcery.bright_yellow
 
-local red       = {'#ee4a59', 203, 'red'}
-local red_dark  = {'#a80000', 124, 'darkred'}
-local red_light = {'#ff4090', 205, 'red'}
+local red       = srcery.red
+local red_dark  = srcery.red
+local red_light = srcery.bright_red
 
-local orange       = {'#ff8900', 208, 'darkyellow'}
-local orange_light = {'#f0af00', 214, 'darkyellow'}
+local orange       = srcery.orange
+local orange_light = srcery.bright_orange
 
-local yellow = {'#f0df33', 227, 'yellow'}
+local yellow = srcery.yellow
 
-local green_dark  = {'#70d533', 113, 'darkgreen'}
-local green       = {'#22ff22', 46,  'green'}
-local green_light = {'#99ff99', 120, 'green'}
-local turqoise    = {'#2bff99', 48,  'green'}
+local green_dark  = srcery.bright_green
+local green       = srcery.green
+local green_light = srcery.bright_green
+local turqoise    = srcery.blue
 
-local blue = {'#7766ff', 63,  'darkblue'}
-local cyan = {'#33dbc3', 80,  'cyan'}
-local ice  = {'#95c5ff', 111, 'cyan'}
-local teal = {'#60afff', 75,  'blue'}
+local blue = srcery.blue
+local cyan = srcery.cyan
+local ice  = srcery.cyan
+local teal = srcery.bright_blue
 
-local magenta      = {'#d5508f', 168, 'magenta'}
-local magenta_dark = {'#bb0099', 126, 'darkmagenta'}
-local pink         = {'#ffa6ff', 219, 'magenta'}
-local pink_light   = {'#ffb7b7', 217, 'white'}
-local purple       = {'#cf55f0', 171, 'magenta'}
-local purple_light = {'#af60af', 133, 'darkmagenta'}
+local magenta      = srcery.magenta
+local magenta_dark = srcery.magenta
+local pink         = srcery.magenta
+local pink_light   = srcery.bright_magenta
+local purple       = srcery.magenta
+local purple_light = srcery.bright_magenta
 
 --[[ Step 4: highlights
 	You can define highlight groups like this:
