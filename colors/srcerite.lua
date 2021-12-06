@@ -349,10 +349,10 @@ local highlight_groups = {
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal = 'NonText',
 	CursorLine   = {bg=gray_dark},
-	CursorLineNr = function(self) return {fg=pink, bg=self.LineNr.bg} end,
+	CursorLineNr = function(self) return {fg=gray, bg=self.LineNr.bg} end,
 	debugBreakpoint = 'ErrorMsg',
 	debugPC = 'ColorColumn',
-	LineNr  = {fg=gray},
+	LineNr  = {fg=gray_darker},
 	QuickFixLine = function(self) return {bg=self.StatusLine.bg} end,
 	Visual    = {style='inverse'},
 	VisualNOS = {bg=gray_darker},
