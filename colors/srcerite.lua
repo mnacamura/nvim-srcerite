@@ -366,7 +366,7 @@ local highlight_groups = {
 
 	--[[ 4.2.5. Folds]]
 	FoldColumn = {bg=gray_darker, style='bold'},
-	Folded = {fg=black,  bg=purple_light, style='italic'},
+	Folded = {fg=gray_darker, style='italic'},
 
 	--[[ 4.2.6. Diffs]]
 	DiffAdd    = {fg=black, bg=green_dark},
