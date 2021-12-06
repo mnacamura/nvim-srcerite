@@ -386,7 +386,7 @@ local highlight_groups = {
 	SpellRare  = {style={'undercurl', color=orange}},
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
-	ColorColumn = {style='inverse'},
+	ColorColumn = {bg=gray_dark},
 	SignColumn  = NONE,
 
 	--[[ 4.2.10. Messages]]
