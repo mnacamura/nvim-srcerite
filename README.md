@@ -1,5 +1,7 @@
 # nvim-srcerite
 
+![screenshot](./screenshot.png)
+
 `nvim-srcerite` is a colorscheme for Neovim, generated from the template colorscheme
 [nvim-highlite][1].
 
