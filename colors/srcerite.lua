@@ -375,9 +375,9 @@ local highlight_groups = {
 	DiffText   = {fg=yellow},
 
 	--[[ 4.2.7. Searching]]
-	IncSearch  = {style='inverse'},
+	IncSearch  = {bg=gray_darker, style={'underline', 'bold'}},
 	MatchParen = {fg=green, style={'bold', 'underline'}},
-	Search = {style={'underline', color=white}},
+	Search = {bg=gray_darker, style='bold'},
 
 	--[[ 4.2.8. Spelling]]
 	SpellBad   = {style={'undercurl', color=red}},
