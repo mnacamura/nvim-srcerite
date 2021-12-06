@@ -11,10 +11,10 @@ make the best use of `srcery`'s contrasting color palette and `highlite`'s nice 
 
 ## Installation
 
-Use your favorite package manager.
+Use your favorite package manager for installation.
 More instruction can be found at `nvim-highlite`'s [README][3].
 
-Don't forget to put something like the following lines into your `init.lua`.
+Put the following lines into your `init.lua`.
 
 ```lua
 vim.opt.termguicolors = true
