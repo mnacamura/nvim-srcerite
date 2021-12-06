@@ -1,6 +1,9 @@
 nvim-highlite – A colorscheme template for Neovim.
 Copyright © 2020 Iron-E
 
+nvim-srcerite – A colorscheme for Neovim inspired by Srcery.
+Copyright © 2021 Mitsuhiro Nakamura
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
