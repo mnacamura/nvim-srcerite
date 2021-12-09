@@ -3,12 +3,12 @@
 ==============================================================================
 Table of Contents                                 *srcerite-table-of-contents*
 
-1. nvim-srcerite                                      |srcerite-nvim-srcerite|
-  - Installation                                       |srcerite-installation|
-  - Contribution                                       |srcerite-contribution|
+1. Description                                          |srcerite-description|
+2. Installation                                        |srcerite-installation|
+3. Contribution                                        |srcerite-contribution|
 
 ==============================================================================
-1. nvim-srcerite                                      *srcerite-nvim-srcerite*
+1. Description                                          *srcerite-description*
 
 `nvim-srcerite` is a colorscheme for Neovim, generated from the template
 colorscheme nvim-highlite <https://github.com/Iron-E/nvim-highlite>.
@@ -19,7 +19,8 @@ a mix-in of `srcery` and `highlite`: it is intended to make the best use of
 `srcery`’s contrasting color palette and `highlite`’s nice syntax
 highlighting.
 
-INSTALLATION                                           *srcerite-installation*
+==============================================================================
+2. Installation                                        *srcerite-installation*
 
 Use your favorite package manager for installation. More instruction can be
 found at `nvim-highlite`’s README
@@ -35,7 +36,8 @@ Put the following lines into your `init.lua`.
 
 As with `nvim-highlite`, Neovim 0.5+ is required.
 
-CONTRIBUTION                                           *srcerite-contribution*
+==============================================================================
+3. Contribution                                        *srcerite-contribution*
 
 If you like this colorscheme, don’t forget to add star to nvim-highlite
 <https://github.com/Iron-E/nvim-highlite>! Any contributions to this repo are
