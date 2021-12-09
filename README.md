@@ -1,4 +1,4 @@
-# nvim-srcerite
+# Description
 
 `nvim-srcerite` is a colorscheme for Neovim, generated from the template colorscheme
 [nvim-highlite][1].
@@ -13,7 +13,7 @@ make the best use of `srcery`'s contrasting color palette and `highlite`'s nice 
 
 <!-- panvimdoc-ignore-end -->
 
-## Installation
+# Installation
 
 Use your favorite package manager for installation.
 More instruction can be found at `nvim-highlite`'s [README][3].
@@ -27,7 +27,7 @@ vim.cmd [[colorscheme srcerite]]
 
 As with `nvim-highlite`, Neovim 0.5+ is required.
 
-## Contribution
+# Contribution
 
 If you like this colorscheme, don't forget to add star to [nvim-highlite][1]!
 Any contributions to this repo are also welcome!
