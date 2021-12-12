@@ -14,9 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: dev
-      - name: panvimdoc
-        uses: kdheepak/panvimdoc@main
+          ref: ${{ github.head_ref }}
+      - uses: kdheepak/panvimdoc@v2.7.1
         with:
           vimdoc: srcerite
           description: a colorscheme for neovim inspired by srcery
@@ -24,6 +23,5 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'doc: auto generate help'
-          branch: ${{ github.head_ref }}
           file_pattern: doc/srcerite.txt
           push_options: '--force'
