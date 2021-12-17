@@ -1,4 +1,4 @@
-name: panvimdoc
+name: README to Help
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
 
 jobs:
   doc:
+    name: README to Help
     runs-on: ubuntu-latest
-    name: readme to help
     steps:
       - uses: actions/checkout@v2
         with:
