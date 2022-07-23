@@ -66,12 +66,12 @@ vim.g.colors_name = 'srcerite'
 
 ```lua
 	<color name> = { -- Give each color a distinctive name.
-		'#<hex color code>', -- Hexadecimal color used in GVim/MacVim or 'NONE'.
-		<16-bit color code>, -- Integer 0–255 used by terminals supporting 256 colors or 'NONE'.
+		'#<hex color code>', -- Hexadecimal color used in GVim/MacVim
+		<16-bit color code>, -- Integer 0–255 used by terminals supporting 256 colors
 		'<ANSI color name>'  -- color name used by less capable color terminals, can be 'darkred',
 		                       'red', 'darkgreen', 'green', 'darkyellow', 'yellow', 'darkblue',
 		                       'blue', 'darkmagenta', 'magenta', 'black', 'darkgrey', 'grey',
-		                       'white', or 'NONE'
+		                       'white'
 	}
 ```
 
@@ -127,10 +127,10 @@ local purple_light = srcery.bright_magenta
 
 ```lua
 	<highlight group name> = {
-		-- The color for the background, `NONE`, `FG` or `BG`
+		-- The color for the background, or `nil`
 		bg = <color>,
 
-		-- The color for the foreground, `NONE`, `FG` or `BG`
+		-- The color for the foreground, or `nil`
 		fg = <color>
 
 		-- The |highlight-blend| value, if one is desired.
@@ -138,7 +138,7 @@ local purple_light = srcery.bright_magenta
 
 		-- Style can be 'bold', 'italic', and more. See |attr-list| for more information.
 		-- It can also have a color, and/or multiple <cterm>s.
-		[, style = <cterm>|{<cterm> (, <cterm>) [color=<color>]} ]
+		[, style = <cterm>|{<cterm> (, <cterm>) [color = <color>]} ]
 	}
 ```
 
@@ -154,11 +154,11 @@ local purple_light = srcery.bright_magenta
 
 ```lua
 	SpellBad = { -- ← name of the highlight group
-		bg=NONE, -- background color
-		fg=red, -- foureground color
-		style={ -- the style
+		bg = nil, -- background color
+		fg = red, -- foureground color
+		style = { -- the style
 			'undercurl', -- undercurl (squiggly line)
-			color=red -- the color of the undercurl
+			color = red -- the color of the undercurl
 		}
 	},
 	SpellWorse = 'SpellBad'
@@ -169,12 +169,12 @@ local purple_light = srcery.bright_magenta
 
 ```lua
 	SpellBad = { -- ← name of the highlight group
-		bg=NONE, -- background color
-		fg=red, -- foureground color
-		style={ -- the style
+		bg = nil, -- background color
+		fg = red, -- foureground color
+		style = { -- the style
 			'undercurl', -- undercurl (squiggly line)
 			'standout'
-			color=red -- the color of the undercurl
+			color = red -- the color of the undercurl
 		}
 	}
 ```
@@ -186,10 +186,10 @@ local purple_light = srcery.bright_magenta
 
 ```lua
 	SpellBad = {
-		bg=NONE,
-		dark={fg=white},
-		light={fg=black},
-		style={'undercurl', color=red}
+		bg = nil,
+		dark = {fg = white},
+		light = {fg = black},
+		style = {'undercurl', color = red}
 	}
 ```
 
@@ -212,9 +212,9 @@ local purple_light = srcery.bright_magenta
 		inherited_style.color = red
 
 		return {
-			bg=NONE,
-			fg=NONE,
-			style=inherited_style
+			bg = nil,
+			fg = nil,
+			style = inherited_style
 		}
 	end
 ```
@@ -234,140 +234,136 @@ local purple_light = srcery.bright_magenta
 	      the benefits of using this template.
 ]]
 
---[[ DO NOT EDIT `BG` NOR `FG`. ]]
-local BG = 'bg'
-local FG = 'fg'
-local NONE = {}
-
 --[[ These are the ones you should edit. ]]
 -- This is the only highlight that must be defined separately.
-local highlight_group_normal = {fg=gray_light, bg=NONE}
+local highlight_group_normal = {fg = gray_light}
+
 -- This is where the rest of your highlights should go.
 local highlight_groups = {
 	--[[ 4.1. Text Analysis ]]
-	Comment = {fg=gray, style='italic'},
-	NonText = {fg=gray_darker},
+	Comment = {fg = gray, style = 'italic'},
+	NonText = {fg = gray_darker},
 	EndOfBuffer = 'NonText',
 	Whitespace  = 'NonText',
 
 	--[[ 4.1.1. Literals]]
-	Constant = {fg=orange_light},
-	String = {fg=green_dark},
-	Character = {fg=red_light},
-	Number  = {fg=pink_light},
-	Boolean = {fg=yellow},
+	Constant = {fg = orange_light},
+	String = {fg = green_dark},
+	Character = {fg = red_light},
+	Number  = {fg = pink_light},
+	Boolean = {fg = yellow},
 	Float   = 'Number',
 
 	--[[ 4.1.2. Identifiers]]
-	Identifier = {fg=FG},
-	Function = {fg=purple},
+	Identifier = {fg = highlight_group_normal.fg},
+	Function = {fg = purple},
 
 	--[[ 4.1.3. Syntax]]
-	Statement   = {fg=ice},
-	Conditional = {fg=ice, style='italic'},
-	Repeat   = {fg=turqoise, style='italic'},
-	Label    = {fg=pink, style='bold'},
-	Operator = {fg=green, style='bold'},
-	Keyword  = {fg=teal},
-	Exception = {fg=red_light, style='bold'},
+	Statement   = {fg = ice},
+	Conditional = {fg = ice, style = 'italic'},
+	Repeat   = {fg = turqoise, style = 'italic'},
+	Label    = {fg = pink, style = 'bold'},
+	Operator = {fg = green, style = 'bold'},
+	Keyword  = {fg = teal},
+	Exception = {fg = red_light, style = 'bold'},
 	Noise = 'Delimiter',
 
 	--[[ 4.1.4. Metatextual Information]]
-	PreProc = {fg=tan},
-	Include = {fg=green_light, style='nocombine'},
-	Define = {fg=blue, style='nocombine'},
-	Macro  = {fg=blue, style='italic'},
-	PreCondit = {fg=tan, style='italic'},
+	PreProc = {fg = tan},
+	Include = {fg = green_light, style = 'nocombine'},
+	Define = {fg = blue, style = 'nocombine'},
+	Macro  = {fg = blue, style = 'italic'},
+	PreCondit = {fg = tan, style = 'italic'},
 
 	--[[ 4.1.5. Semantics]]
-	Type         = {fg=cyan},
-	StorageClass = {fg=orange_light, style='bold'},
-	Structure = {fg=blue, style='bold'},
-	Typedef = {fg=cyan, style='italic'},
+	Type         = {fg = cyan},
+	StorageClass = {fg = orange_light, style = 'bold'},
+	Structure = {fg = blue, style = 'bold'},
+	Typedef = {fg = cyan, style = 'italic'},
 
 	--[[ 4.1.6. Edge Cases]]
-	Special = {fg=magenta, style='bold'},
-	SpecialChar = {fg=red_light, style='italic'},
+	Special = {fg = magenta, style = 'bold'},
+	SpecialChar = {fg = red_light, style = 'italic'},
 	SpecialKey = 'Character',
 	Tag = 'Underlined',
-	Delimiter = {fg=white},
-	SpecialComment = {fg=gray, style={'bold', 'nocombine'}},
+	Delimiter = {fg = white},
+	SpecialComment = {fg = gray, style = {'bold', 'nocombine'}},
 	Debug = 'WarningMsg',
 
 	--[[ 4.1.7. Help Syntax]]
-	Underlined = {fg=turqoise, style='underline'},
-	Ignore = {fg=gray},
-	Error = {fg=gray_light, bg=red_dark, style='bold'},
-	Todo = {fg=black, bg=yellow, style='bold'},
-	Hint = {fg=gray_light, bg=magenta, style='bold'},
-	Info = {fg=black, bg=pink_light, style='bold'},
-	Warning = {fg=black, bg=orange, style='bold'},
+	Underlined = {fg = turqoise, style = 'underline'},
+	Ignore = {fg = gray},
+	Error = {fg = gray_light, bg = red_dark, style = 'bold'},
+	Todo = {fg = black, bg = yellow, style = 'bold'},
+	Hint = {fg = gray_light, bg = magenta, style = 'bold'},
+	Info = {fg = black, bg = pink_light, style = 'bold'},
+	Warning = {fg = black, bg = orange, style = 'bold'},
 
 	--[[ 4.2... Editor UI  ]]
 	--[[ 4.2.1. Status Line]]
-	StatusLine = {fg=green_light, bg=gray_darker},
-	StatusLineNC = function(self) return {fg=gray, bg=self.StatusLine.bg} end,
+	StatusLine = {fg = green_light, bg = gray_darker},
+	StatusLineNC = function(self) return {fg = gray, bg = self.StatusLine.bg} end,
 	StatusLineTerm = 'StatusLine',
 	StatusLineTermNC = 'StatusLineNC',
 
 	--[[ 4.2.2. Separators]]
-	FloatBorder = {fg=gray},
-	TabLine = function(self) return {fg=FG, bg=self.StatusLine.bg} end,
-	TabLineFill = function(self) return {fg=self.TabLine.bg, bg=black} end,
-	TabLineSel = function(self) return {fg=self.TabLine.fg, bg=highlight_group_normal.bg} end,
-	Title = {style='bold'},
-	VertSplit = function(self) return {fg=self.StatusLine.bg} end,
+	FloatBorder = {fg = gray},
+	TabLine = function(self) return {fg = highlight_group_normal.fg, bg = self.StatusLine.bg} end,
+	TabLineFill = function(self) return {fg = self.TabLine.bg, bg = black} end,
+	TabLineSel = function(self) return {fg = self.TabLine.fg, bg = highlight_group_normal.bg} end,
+	Title = {style = 'bold'},
+	VertSplit = function(self) return {fg = self.StatusLine.bg} end,
 
 	--[[ 4.2.3. Conditional Line Highlighting]]
 	Conceal = 'NonText',
-	CursorLine   = {bg=gray_dark},
-	CursorLineNr = function(self) return {fg=gray, bg=self.LineNr.bg} end,
+	CursorLine   = {bg = gray_dark},
+	CursorLineNr = function(self) return {fg = gray, bg = self.LineNr.bg} end,
 	debugBreakpoint = 'ErrorMsg',
 	debugPC = 'ColorColumn',
-	LineNr  = {fg=gray_darker},
-	QuickFixLine = function(self) return {bg=self.StatusLine.bg} end,
-	Visual    = {style='inverse'},
-	VisualNOS = {bg=gray_darker},
+	LineNr  = {fg = gray_darker},
+	QuickFixLine = function(self) return {bg = self.StatusLine.bg} end,
+	Visual    = {style = 'inverse'},
+	VisualNOS = {bg = gray_darker},
 
 	--[[ 4.2.4. Popup Menu]]
-	Pmenu = {fg=FG, bg=gray_dark},
-	PmenuSbar = NONE,
-	PmenuSel  = {fg=black, bg=gray_light},
-	PmenuThumb = NONE,
+	Pmenu = {fg = highlight_group_normal.fg, bg = gray_dark},
+	PmenuSbar = {},
+	PmenuSel  = {fg = black, bg = gray_light},
+	PmenuThumb = {},
 	WildMenu = 'PmenuSel',
 
 	--[[ 4.2.5. Folds]]
-	FoldColumn = {bg=gray_darker, style='bold'},
-	Folded = {fg=gray_darker, style='italic'},
+	FoldColumn = {bg = gray_darker, style = 'bold'},
+	Folded = {fg = gray_darker, style = 'italic'},
 
 	--[[ 4.2.6. Diffs]]
-	DiffAdd    = {fg=green_dark},
-	DiffChange = {bg=gray_dark},
-	DiffDelete = {fg=red},
-	DiffText   = {fg=yellow},
+	DiffAdd    = {fg = green_dark},
+	DiffChange = {bg = gray_dark},
+	DiffDelete = {fg = red},
+	DiffText   = {fg = yellow},
 
 	--[[ 4.2.7. Searching]]
-	IncSearch  = {bg=gray_darker, style={'underline', 'bold'}},
-	MatchParen = {fg=green, style={'bold', 'underline'}},
-	Search = {bg=gray_darker, style='bold'},
+	IncSearch  = {bg = gray_darker, style = {'underline', 'bold'}},
+	MatchParen = {fg = green, style = {'bold', 'underline'}},
+	Search = {bg = gray_darker, style = 'bold'},
 
 	--[[ 4.2.8. Spelling]]
-	SpellBad   = {style={'undercurl', color=red}},
-	SpellCap   = {style={'undercurl', color=yellow}},
-	SpellLocal = {style={'undercurl', color=green}},
-	SpellRare  = {style={'undercurl', color=orange}},
+	SpellBad   = {style = {'undercurl', color = red}},
+	SpellCap   = {style = {'undercurl', color = yellow}},
+	SpellLocal = {style = {'undercurl', color = green}},
+	SpellRare  = {style = {'undercurl', color = orange}},
 
 	--[[ 4.2.9. Conditional Column Highlighting]]
-	ColorColumn = {bg=gray_dark},
-	SignColumn  = NONE,
+	ColorColumn = {bg = gray_dark},
+	SignColumn  = {},
 
 	--[[ 4.2.10. Messages]]
-	ErrorMsg = {fg=red, style='bold'},
-	HintMsg  = {fg=magenta, style='italic'},
-	InfoMsg  = {fg=pink_light, style='italic'},
-	ModeMsg  = {fg=yellow},
-	WarningMsg = {fg=orange, style='bold'},
-	Question   = {fg=orange_light, style='underline'},
+	ErrorMsg = {fg = red, style = 'bold'},
+	HintMsg  = {fg = magenta, style = 'italic'},
+	InfoMsg  = {fg = pink_light, style = 'italic'},
+	ModeMsg  = {fg = yellow},
+	WarningMsg = {fg = orange, style = 'bold'},
+	Question   = {fg = orange_light, style = 'underline'},
 
 	--[[ 4.2.11. LSP / Diagnostics ]]
 	DiagnosticError = 'Error',
@@ -386,10 +382,10 @@ local highlight_groups = {
 	DiagnosticFloatingInfo = 'InfoMsg',
 	DiagnosticSignInfo = 'DiagnosticFloatingInfo',
 
-	DiagnosticUnderlineError = {style={'undercurl', color=red}},
-	DiagnosticUnderlineHint  = {style={'undercurl', color=magenta}},
-	DiagnosticUnderlineInfo  = {style={'undercurl', color=pink_light}},
-	DiagnosticUnderlineWarn = {style={'undercurl', color=orange}},
+	DiagnosticUnderlineError = {style = {'undercurl', color = red}},
+	DiagnosticUnderlineHint  = {style = {'undercurl', color = magenta}},
+	DiagnosticUnderlineInfo  = {style = {'undercurl', color = pink_light}},
+	DiagnosticUnderlineWarn = {style = {'undercurl', color = orange}},
 
 	LspDiagnosticsDefaultError = 'DiagnosticError',
 	LspDiagnosticsFloatingError = 'DiagnosticFloatingError',
@@ -413,12 +409,12 @@ local highlight_groups = {
 	LspDiagnosticsUnderlineWarning = 'DiagnosticUnderlineWarn',
 
 	--[[ 4.2.12. Cursor ]]
-	Cursor   = {style='inverse'},
+	Cursor   = {style = 'inverse'},
 	CursorIM = 'Cursor',
-	CursorColumn = {bg=gray_dark},
+	CursorColumn = {bg = gray_dark},
 
 	--[[ 4.2.13. Misc ]]
-	Directory = {fg=ice, style='bold'},
+	Directory = {fg = ice, style = 'bold'},
 
 	--[[ 4.3. Programming Languages
 		Everything in this section is OPTIONAL. Feel free to remove everything
@@ -497,7 +493,7 @@ local highlight_groups = {
 	scssElse           = 'scssIf',
 	scssMixinName      = function(self)
 		local super = self.cssClassName
-		return {bg=super.bg, fg=super.fg, style='Italic'}
+		return {bg = super.bg, fg = super.fg, style = 'italic'}
 	end,
 	scssIf             = 'PreCondit',
 	scssInclude        = 'Include',
@@ -523,7 +519,7 @@ local highlight_groups = {
 	goFormatSpecifier = 'Character',
 	goFunction = 'Function',
 	goFunctionCall   = 'goFunction',
-	goFunctionReturn = NONE,
+	goFunctionReturn = {},
 	goMethodCall = 'goFunctionCall',
 	goParamType  = 'goReceiverType',
 	goPointerOperator = 'SpecialChar',
@@ -539,7 +535,7 @@ local highlight_groups = {
 
 	--[[ 4.3.8. HTML ]]
 	htmlArg    = 'Label',
-	htmlBold   = {fg=highlight_group_normal.fg, style='bold'},
+	htmlBold   = {fg = highlight_group_normal.fg, style = 'bold'},
 	htmlTitle  = 'htmlBold',
 	htmlEndTag = 'htmlTag',
 	htmlH1 = 'markdownH1',
@@ -548,7 +544,7 @@ local highlight_groups = {
 	htmlH4 = 'markdownH4',
 	htmlH5 = 'markdownH5',
 	htmlH6 = 'markdownH6',
-	htmlItalic  = {style='italic'},
+	htmlItalic  = {style = 'italic'},
 	htmlSpecialTagName = 'Keyword',
 	htmlTag  = 'Special',
 	htmlTagN = 'Typedef',
@@ -592,7 +588,7 @@ local highlight_groups = {
 	luaSpecialValue = 'Function',
 	luaStringLongTag = function(self)
 		local delimiter = self.Delimiter
-		return {bg=delimiter.bg, fg=delimiter.fg, style='italic'}
+		return {bg = delimiter.bg, fg = delimiter.fg, style = 'italic'}
 	end,
 
 	--[[ 4.3.12. Make ]]
@@ -602,26 +598,30 @@ local highlight_groups = {
 	--[[ 4.3.13. Markdown ]]
 	markdownCode = 'mkdCode',
 	markdownCodeDelimiter = 'mkdCodeDelimiter',
-	markdownH1 = {fg=red, style='bold'},
-	markdownH2 = {fg=orange, style='bold'},
-	markdownH3 = {fg=yellow, style='bold'},
-	markdownH4 = {fg=green_dark, style='bold'},
-	markdownH5 = {fg=cyan, style='bold'},
-	markdownH6 = {fg=purple_light, style='bold'},
-	markdownLinkDelimiter = 'Delimiter',
+	markdownH1 = {fg = red, style = 'bold'},
+	markdownH2 = {fg = orange, style = 'bold'},
+	markdownH3 = {fg = yellow, style = 'bold'},
+	markdownH4 = {fg = green_dark, style = 'bold'},
+	markdownH5 = {fg = cyan, style = 'bold'},
+	markdownH6 = {fg = purple_light, style = 'bold'},
+	markdownLinkDelimiter = 'mkdDelimiter',
+	markdownLinkText = 'mkdLink',
 	markdownLinkTextDelimiter = 'markdownLinkDelimiter',
-	markdownUrl = 'Underlined',
+	markdownUrl = 'mkdURL',
 	mkdBold = 'Ignore',
 	mkdBoldItalic = 'mkdBold',
 	mkdCode = 'Keyword',
 	mkdCodeDelimiter = 'mkdBold',
 	mkdCodeEnd = 'mkdCodeStart',
 	mkdCodeStart = 'mkdCodeDelimiter',
+	mkdDelimiter = 'Delimiter',
 	mkdHeading = 'Delimiter',
 	mkdItalic  = 'mkdBold',
 	mkdLineBreak = 'NonText',
+	mkdLink = 'Underlined',
 	mkdListItem  = 'Special',
-	mkdRule = function(self) return {fg=self.Ignore.fg, style={'underline', color=self.Delimiter.fg}} end,
+	mkdRule = function(self) return {fg = self.Ignore.fg, style = {'underline', color = self.Delimiter.fg}} end,
+	mkdURL = 'htmlString',
 
 	--[[ 4.3.20. Python ]]
 	pythonBrackets    = 'Delimiter',
@@ -719,11 +719,12 @@ local highlight_groups = {
 
 	--[[ 4.3.32. PlantUML ]]
 	plantumlArrowLR   = 'Statement',
-	plantumlColonLine = NONE,
+	plantumlColonLine = {},
 	plantumlMindmap   = 'Label',
 	plantumlMindmap2  = 'Label',
 
 	--[[ 4.3.33. YAML ]]
+	yamlInline = 'Delimiter',
 	yamlKey = 'Label',
 
 	--[[ 4.3.34. Git ]]
@@ -787,13 +788,17 @@ local highlight_groups = {
 	helpHyperTextJump = 'Underlined',
 
 	--[[ 4.3.38 Man ]]
-	-- manBold = function(self) return vim.tbl_extend('force', self.mkdCode, {style='nocombine'}) end,
+	-- manBold = function(self) return vim.tbl_extend('force', self.mkdCode, {style = 'nocombine'}) end,
 	manOptionDesc = 'Special',
 	manReference = 'Tag',
 	manUnderline = 'Label',
 
 	--[[ 4.3.39 Rust ]]
+	rustAssert = 'Debug',
+	rustCharacterDelimiter = 'rustNoise',
 	rustIdentifier = 'Identifier',
+	rustStaticLifetime = 'rustStorage',
+	rustStringDelimiter = 'rustNoise',
 
 	--[[ 4.3.40 XXD ]]
 	xxdAddress = 'Label',
@@ -813,7 +818,7 @@ local highlight_groups = {
 	--[[ 4.4.2. coc.nvim ]]
 	CocErrorHighlight = 'DiagnosticUnderlineError',
 	CocErrorSign = 'DiagnosticSignError',
-	CocHintHighlight  = 'DiagnosticUnderlineHint  ',
+	CocHintHighlight  = 'DiagnosticUnderlineHint',
 	CocHintSign  = 'DiagnosticSignHint',
 	CocInfoHighlight  = 'DiagnosticUnderlineInfo',
 	CocInfoSign  = 'DiagnosticSignInfo',
@@ -828,7 +833,7 @@ local highlight_groups = {
 	GitGutterAdd    = {fg = green},
 	GitGutterChange = {fg = yellow},
 	GitGutterDelete = {fg = red},
-	GitGutterChangeDelete = {fg=orange},
+	GitGutterChangeDelete = {fg = orange},
 
 	SignifySignAdd    = 'GitGutterAdd',
 	SignifySignChange = 'GitGutterChange',
@@ -840,8 +845,8 @@ local highlight_groups = {
 	GitSignsDelete = 'GitGutterDelete',
 
 	--[[ 4.4.5. vim-indent-guides ]]
-	IndentGuidesOdd  = {bg=gray_darker},
-	IndentGuidesEven = {bg=gray_dark},
+	IndentGuidesOdd  = {bg = gray_darker},
+	IndentGuidesEven = {bg = gray_dark},
 
 	--[[ 4.4.7. NERDTree ]]
 	NERDTreeCWD = 'Label',
@@ -854,37 +859,36 @@ local highlight_groups = {
 	NERDTreeLinkTarget = 'Tag',
 
 	--[[ 4.4.8. nvim-treesitter ]]
-	TSConstBuiltin = 'Constant',
-	TSConstructor  = 'Typedef',
-	TSFuncBuiltin  = 'Function',
-	TSStringEscape = 'Character',
-	TSStringRegex  = 'SpecialChar',
-	TSURI = 'Tag',
-	TSVariableBuiltin = 'Identifier',
+	TSConstBuiltin = 'TSConstant',
+	TSConstructor = 'TSFunction',
+	TSDanger = 'ErrorMsg',
+	TSFuncBuiltin = 'TSFunction',
+	TSTag = 'Tag',
+	TSWarning = 'WarningMsg',
 
 	--[[ 4.4.9. barbar.nvim ]]
 	BufferCurrent       = 'TabLineSel',
-	BufferCurrentIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferCurrent.bg} end,
-	BufferCurrentMod    = {fg=tan, bg=black, style='bold'},
+	BufferCurrentIndex  = function(self) return {fg = self.InfoMsg.fg, bg = self.BufferCurrent.bg} end,
+	BufferCurrentMod    = {fg = tan, bg = black, style = 'bold'},
 	BufferCurrentSign   = 'HintMsg',
 	BufferCurrentTarget = 'BufferCurrentSign',
 
 	BufferInactive       = 'BufferVisible',
-	BufferInactiveIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferInactive.bg} end,
+	BufferInactiveIndex  = function(self) return {fg = self.InfoMsg.fg, bg = self.BufferInactive.bg} end,
 	BufferInactiveMod    = 'BufferVisibleMod',
 	BufferInactiveSign   = 'BufferVisibleSign',
 	BufferInactiveTarget = 'BufferVisibleTarget',
 
-	BufferTabpages    = {fg=highlight_group_normal.bg, bg=FG, style='bold'},
+	BufferTabpages    = {style = 'bold'},
 	BufferTabpageFill = 'TabLineFill',
 
 	BufferVisible       = 'TabLine',
-	BufferVisibleIndex  = function(self) return {fg=self.InfoMsg.fg, bg=self.BufferVisible.bg} end,
-	BufferVisibleMod    = function(self) return {fg=white, bg=self.BufferVisible.bg, style='italic'} end,
+	BufferVisibleIndex  = function(self) return {fg = self.InfoMsg.fg, bg = self.BufferVisible.bg} end,
+	BufferVisibleMod    = function(self) return {fg = white, bg = self.BufferVisible.bg, style = 'italic'} end,
 	BufferVisibleSign   = 'BufferVisible',
 	BufferVisibleTarget = function(self)
 		local super = self.BufferVisibleMod
-		return {fg=super.fg, bg=super.bg, style='bold'}
+		return {fg = super.fg, bg = super.bg, style = 'bold'}
 	end,
 
 	--[[ 4.4.10. vim-sandwhich ]]
@@ -902,26 +906,26 @@ local highlight_groups = {
 	TargetWord = 'Title',
 
 	--[[ 4.4.13. indent-blankline.nvim ]]
-	IndentBlanklineChar = function(self) return vim.tbl_extend('force', self.Whitespace, {style='nocombine'}) end,
+	IndentBlanklineChar = function(self) return vim.tbl_extend('force', self.Whitespace, {style = 'nocombine'}) end,
 	IndentBlanklineSpaceChar = 'IndentBlanklineChar',
 
 	--[[ 4.4.14. trouble.nvim ]]
-	TroubleCount = function(self) return vim.tbl_extend('force', self.Number, {style='underline'}) end,
+	TroubleCount = function(self) return vim.tbl_extend('force', self.Number, {style = 'underline'}) end,
 
 	--[[ 4.4.15. todo-comments.nvim ]]
-	TodoFgFIX = function(self) return {fg=self.ErrorMsg.fg} end,
-	TodoFgHACK = function(self) return {fg=self.Todo.bg} end,
+	TodoFgFIX = function(self) return {fg = self.ErrorMsg.fg} end,
+	TodoFgHACK = function(self) return {fg = self.Todo.bg} end,
 	TodoFgNOTE = 'HintMsg',
 	TodoFgPERF = 'InfoMsg',
-	TodoFgTODO = {fg=cyan, style='italic'},
-	TodoFgWARN = function(self) return {fg=self.WarningMsg.fg} end,
+	TodoFgTODO = {fg = cyan, style = 'italic'},
+	TodoFgWARN = function(self) return {fg = self.WarningMsg.fg} end,
 
-	TodoBgFIX = function(self) return {fg=black, bg=self.ErrorMsg.fg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgHACK = function(self) return {fg=black, bg=self.Todo.bg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgNOTE = function(self) return {fg=black, bg=self.Hint.bg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgPERF = function(self) return {fg=black, bg=self.Info.bg, style={'bold', 'italic', 'nocombine'}} end,
-	TodoBgTODO = {fg=black, bg=cyan, style={'bold', 'italic', 'nocombine'}},
-	TodoBgWARN = function(self) return {fg=black, bg=self.Warning.bg, style={'bold', 'italic', 'nocombine'}} end,
+	TodoBgFIX = function(self) return {fg = black, bg = self.ErrorMsg.fg, style = {'bold', 'italic', 'nocombine'}} end,
+	TodoBgHACK = function(self) return {fg = black, bg = self.Todo.bg, style = {'bold', 'italic', 'nocombine'}} end,
+	TodoBgNOTE = function(self) return {fg = black, bg = self.Hint.bg, style = {'bold', 'italic', 'nocombine'}} end,
+	TodoBgPERF = function(self) return {fg = black, bg = self.Info.bg, style = {'bold', 'italic', 'nocombine'}} end,
+	TodoBgTODO = {fg = black, bg = cyan, style = {'bold', 'italic', 'nocombine'}},
+	TodoBgWARN = function(self) return {fg = black, bg = self.Warning.bg, style = {'bold', 'italic', 'nocombine'}} end,
 
 	TodoSignFIX  = 'TodoFgFIX',
 	TodoSignHACK = 'TodoFgHACK',
@@ -931,15 +935,14 @@ local highlight_groups = {
 	TodoSignWARN = 'TodoFgWARN',
 
 	--[[ 4.4.16. nvim-cmp ]]
-	CmpDocumentationBorder = 'FloatBorder',
 	CmpItemAbbrDefault = 'Ignore',
 	CmpItemAbbrMatchDefault = 'Underlined',
-	CmpItemAbbrMatchFuzzyDefault = {fg=highlight_group_normal.fg, style={'nocombine', 'underline'}},
-	CmpItemKindDefault = 'Type',
+	CmpItemAbbrMatchFuzzyDefault = {fg = highlight_group_normal.fg, style = {'nocombine', 'underline'}},
 	CmpItemKindClassDefault = 'CmpItemKindStructDefault',
 	CmpItemKindColorDefault = 'Label',
 	CmpItemKindConstantDefault = 'Constant',
 	CmpItemKindConstructorDefault = 'CmpItemKindMethodDefault',
+	CmpItemKindDefault = 'Type',
 	CmpItemKindEnumDefault = 'CmpItemKindStructDefault',
 	CmpItemKindEnumMemberDefault = 'CmpItemKindConstantDefault',
 	CmpItemKindEventDefault = 'Repeat',
@@ -961,8 +964,6 @@ local highlight_groups = {
 	CmpItemKindUnitDefault = 'CmpItemKindStructDefault',
 	CmpItemKindValueDefault = 'CmpItemKindConstantDefault',
 	CmpItemKindVariableDefault = 'Identifier',
-	CmpItemMenuDefault = 'NormalFloat',
-	CmpItemMenuThumb = {fg=white, style='bold'},
 
 	--[[ 4.4.17. packer.nvim ]]
 	packerFail = 'ErrorMsg',
@@ -970,16 +971,22 @@ local highlight_groups = {
 	packerPackageNotLoaded = 'Ignore',
 	packerStatusFail = 'Statement',
 	packerStatusSuccess = 'packerStatusFail',
-	packerSuccess = function(self) return {fg=green, style=self.packerFail.style} end,
+	packerSuccess = function(self) return {fg = green, style = self.packerFail.style} end,
 
 	--[[ 4.4.18. nvim-tree ]]
-	NvimTreeGitDeleted = function(self) return {fg=self.DiffDelete.bg, bg=NONE} end,
-	NvimTreeGitDirty = {fg=orange, bg=NONE},
+	NvimTreeGitDeleted = function(self) return {fg = self.DiffDelete.bg} end,
+	NvimTreeGitDirty = {fg = orange},
 	NvimTreeGitIgnored = 'Ignore',
 	NvimTreeGitMerge = 'NvimTreeGitRenamed',
-	NvimTreeGitNew = function(self) return {fg=self.DiffAdd.bg, bg=NONE} end,
-	NvimTreeGitRenamed = function(self) return {fg=self.DiffChange.bg, bg=NONE} end,
-	NvimTreeGitStaged = {fg=cyan, bg=NONE},
+	NvimTreeGitNew = function(self) return {fg = self.DiffAdd.bg} end,
+	NvimTreeGitRenamed = function(self) return {fg = self.DiffChange.bg} end,
+	NvimTreeGitStaged = {fg = cyan},
+
+	--[[ 4.4.19. symbols-outline.nvim ]]
+	FocusedSymbol = {},
+
+	--[[ 4.4.20. mini.nvim ]]
+	MiniJump = 'MiniJump2dSpot',
 }
 
 --[[ Step 5: Terminal Colors

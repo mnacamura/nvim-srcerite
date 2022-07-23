@@ -32,6 +32,10 @@ As with `nvim-highlite`, Neovim 0.5+ is required.
 If you like this colorscheme, don't forget to add star to [nvim-highlite][1]!
 Any contributions to this repo are also welcome!
 
+# Changelog
+
+- 2022-07-23: Merge [upstream][1] version 2.0.2.
+
 
 [1]: https://github.com/Iron-E/nvim-highlite
 [2]: https://github.com/srcery-colors/srcery-vim
