@@ -1,16 +1,20 @@
 --[[ NOTHING INSIDE THIS FILE NEEDS TO BE EDITED BY THE USER. ]]
 
---- A Neovim plugin to create more straightforward syntax for Lua `:map`ping and `:unmap`ping.
---- @module nvim-cartographer
---- @alias highlite table
+--- @class Highlite.Definition
+--- @field bg string|table the background color
+--- @field blend number the transparency value
+--- @field dark Highlite.Definition special highlight definition for when `&bg` is 'dark'
+--- @field fg string|table the foreground color
+--- @field light Highlite.Definition special highlight definition for when `&bg` is 'light'
+--- @field style Highlite.Style special appearance alterations
 
---[[/* VARS */]]
+--- @class Highlite.Style
+--- @field color string|table color of underline or undercurl
+
+--[[/* Vars */]]
 
 --- Which set of colors to use.
 local _USE_256 = tonumber(vim.go.t_Co) > 255 or string.find(vim.env.TERM, '256')
-
---- Indicating nothing for a highlight field.
-local _NONE = 'NONE'
 
 --- Which index to use for `cterm` highlights.
 local _PALETTE_CTERM = _USE_256 and 2 or 3
@@ -24,17 +28,7 @@ local _TYPE_STRING = 'string'
 --- The `table` type.
 local _TYPE_TABLE  = 'table'
 
---[[/* HELPER FUNCTIONS */]]
-
---- Filter out information not pertaining to styles
---- @param key string the field from `nvim_get_hl_by_name`
---- @return boolean should_not_filter `true` if the field should not be filtered
-local function filter_group_style(key)
-	return key ~= 'background'
-		and key ~= 'blend'
-		and key ~= 'foreground'
-		and key ~= 'special'
-end
+--[[/* Helper Functions */]]
 
 --- @param color string|table the color name or definition
 --- @param index number
@@ -45,104 +39,87 @@ local function get(color, index) -- {{{ †
 	elseif type(color) == _TYPE_STRING then
 		return color
 	end
-
-	return _NONE
 end --}}} ‡
-
---- Take a `command` and add color-specifying components to it.
---- @param command table the in-progress `:highlight` command
---- @param definition table the definition of the highlight group
-local function colorize(command, definition) -- {{{ †
-	command[#command+1]=' guibg='..get(definition.bg, _PALETTE_HEX)..' guifg='..get(definition.fg, _PALETTE_HEX)
-		..' ctermbg='..get(definition.bg, _PALETTE_CTERM)..' ctermfg='..get(definition.fg, _PALETTE_CTERM)
-
-	-- Add the `blend` parameter if it is present
-	if definition.blend then -- There is a value for the `highlight-blend` field.
-		command[#command+1]=' blend='..definition.blend
-	end
-end --}}} ‡
-
---- This function appends `selected_definition` to the end of `highlight_cmd`.
---- @param command table the in-progress `:highlight` command
---- @param style string the `gui`/`cterm` arguments to apply
---- @param color string|table a `guisp` argument; same arg as `get`
---- @see get
-local function stylize(command, style, color)
-	command[#command+1]=' gui='..style..' cterm='..style
-
-	if color then -- There is an undercurl color.
-		command[#command+1]=' guisp='..get(color, _PALETTE_HEX)
-	end
-end
 
 --- @param rgb string some string of RGB colors.
 --- @return string hex
 local function tohex(rgb) return string.format('#%06x', rgb) end
 
 --- Create a metatable which prioritizes entries in the `&bg` index of `definition`
---- @param definition table the definition of the highlight group
+--- @param definition Highlite.Definition the definition of the highlight group
 --- @return table
 local function use_background_with(definition)
 	return setmetatable(definition[vim.go.background], {__index = definition})
 end
 
---[[/* MODULE */]]
+--[[/* Module */]]
 
+--- A Neovim plugin to create more straightforward syntax for Lua `:map`ping and `:unmap`ping.
+--- @class Highlite
 local highlite = {}
 
---- @param group_name string
---- @return table definition a nvim-highlite compliant table describing `group_name`
-function highlite.group(group_name)
-	local no_errors, group_definition = pcall(vim.api.nvim_get_hl_by_name, group_name, vim.go.termguicolors)
+--- @param name string the name of the highlight group
+--- @return Highlite.Definition definition an nvim-highlite compliant table describing the highlight group `name`
+function highlite.group(name)
+	local no_errors, definition = pcall(vim.api.nvim_get_hl_by_name, name, vim.go.termguicolors)
 
-	if not no_errors then group_definition = {} end
+	if not no_errors then definition = {} end
 
 	-- the style of the highlight group
-	local style = vim.tbl_filter(filter_group_style, vim.tbl_keys(group_definition))
-	if group_definition.special then
-		style.color = tohex(group_definition.special)
+	local style = {}
+	for k, v in pairs(definition) do
+		if k == 'special' then
+			style.color = tohex(v)
+		elseif k ~= 'background' and k ~= 'blend' and k ~= 'foreground' then
+			style[#style+1] = k
+		end
 	end
 
 	return
 	{
-		fg = group_definition.foreground and tohex(group_definition.foreground) or _NONE,
-		bg = group_definition.background and tohex(group_definition.background) or _NONE,
-		blend = group_definition.blend,
-		style = style or _NONE
+		fg = definition.foreground and tohex(definition.foreground),
+		bg = definition.background and tohex(definition.background),
+		blend = definition.blend,
+		style = style,
 	}
 end
 
 -- Generate a `:highlight` command from a group and some definition.
 
 --- Generate and execute `:highlight` command from a group and some definition.
---- @param highlight_group string the `{group-name}` argument for `:highlight`
---- @param definition string|table a link or an attribute map
-function highlite.highlight(highlight_group, definition) -- {{{ †
+--- @param group_name string the `{group-name}` argument for `:highlight`
+--- @param definition Highlite.Definition|string a link or an attribute map
+function highlite.highlight(group_name, definition) -- {{{ †
+	local highlight = {}
 	if type(definition) == _TYPE_STRING then -- `highlight_group` is a link to another group.
-		vim.api.nvim_command('hi! link '..highlight_group..' '..definition)
-		return
+		highlight.link = definition
+	else
+		-- Take care of special instructions for certain background colors.
+		if definition[vim.go.background] then
+			definition = use_background_with(definition)
+		end
+
+		highlight.bg = get(definition.bg, _PALETTE_HEX)
+		highlight.fg = get(definition.fg, _PALETTE_HEX)
+
+		highlight.ctermbg = get(definition.bg, _PALETTE_CTERM)
+		highlight.ctermfg = get(definition.fg, _PALETTE_CTERM)
+
+		highlight.blend = definition.blend
+
+		local style = definition.style
+		if type(style) == _TYPE_TABLE then
+			for _, option in ipairs(style) do highlight[option] = true end
+			highlight.special = get(style.color, _PALETTE_HEX)
+		elseif style then
+			highlight[style] = true
+		end
+
+		highlight.reverse = highlight.inverse
+		highlight.inverse = nil
 	end
 
-	-- The base highlight command
-	local highlight_cmd = {'hi! ', highlight_group}
-
-	-- Take care of special instructions for certain background colors.
-	if definition[vim.go.background] then
-		definition = use_background_with(definition)
-	end
-
-	colorize(highlight_cmd, definition)
-
-	local style = definition.style or _NONE
-
-	if type(style) == _TYPE_TABLE then
-		-- Concat all of the entries together with a comma between before styling.
-		stylize(highlight_cmd, table.concat(style, ','), style.color)
-	else -- The style is just a single entry.
-		stylize(highlight_cmd, style)
-	end
-
-	vim.api.nvim_command(table.concat(highlight_cmd))
+	vim.api.nvim_set_hl(0, group_name, highlight)
 end --}}} ‡
 
 --- Set `g:terminal_color_`s based on `terminal_colors`.
@@ -192,8 +169,8 @@ return setmetatable(highlite, {__call = function(self, normal, highlights, termi
 	self.highlight('Normal', normal)
 
 	-- Highlight everything else.
-	for highlight_group, _ in pairs(highlights) do
-		self.highlight(highlight_group, resolve(highlights, highlight_group, false))
+	for group_name, _ in pairs(highlights) do
+		self.highlight(group_name, resolve(highlights, group_name, false))
 	end
 
 	-- Set the terminal highlight colors.
