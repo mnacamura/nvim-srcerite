@@ -8,6 +8,11 @@ Table of Contents                                 *srcerite-table-of-contents*
 3. Contribution                                        |srcerite-contribution|
 4. Changelog                                              |srcerite-changelog|
 
+
+  [!IMPORTANT] This project continues at another repository: m15a/nvim-srcerite
+  <https://github.com/m15a/nvim-srcerite>.
+
+
 ==============================================================================
 1. Description                                          *srcerite-description*
 
