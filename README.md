@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> This project continues at another repository:
+> [m15a/nvim-srcerite](https://github.com/m15a/nvim-srcerite).
+
 # Description
 
 `nvim-srcerite` is a colorscheme for Neovim, generated from the template colorscheme
