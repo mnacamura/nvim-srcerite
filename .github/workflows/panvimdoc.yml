@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-      - uses: kdheepak/panvimdoc@v2.7.3
+      - uses: kdheepak/panvimdoc@v3.0.6
         with:
           vimdoc: srcerite
           description: a colorscheme for neovim inspired by srcery
